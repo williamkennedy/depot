@@ -25,8 +25,9 @@
   </div>
   <div class="field">
     <%= f.label :pay_type %><br>
-    <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
+    <%= select_tag 'payment_id', options_for_select(@payments.collect{ |p| [p.type, p.id] }) %>
   </div>
+  
   <div class="actions">
     <%= f.submit 'Place Order' %>
   </div>

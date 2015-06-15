@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  @payments = Payment.all
 
   # GET /orders
   # GET /orders.json
@@ -16,6 +17,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @payments = Payment.all
     if @cart.line_items.empty?
       redirect_to store_url, notice: "Your Cart is empty"
       return
@@ -31,6 +33,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    @payments = Payment.all
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
 
