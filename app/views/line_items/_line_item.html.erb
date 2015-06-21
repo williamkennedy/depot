@@ -6,8 +6,6 @@
 	<td><%= line_item.quantity %>&times;</td>
 	<td><%= line_item.product.title %></td>
 	<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-	<% if @current_item %>
-	<td><%= button_to 'X', line_item, method: :delete  %></td>
-	<% else %>
-	<% end %>
+	<td><%= button_to 'X', line_item, method: :delete unless line_item.blank? #fails test_shipped for some reason. Probably because the customer can still delete items %></td>
+
 </tr>
