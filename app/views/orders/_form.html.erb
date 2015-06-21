@@ -25,7 +25,8 @@
   </div>
   <div class="field">
     <%= f.label :pay_type %><br>
-    <%= select_tag 'payment_id', options_for_select(@payments.collect{ |p| [p.type, p.id] }) %>
+    <%= f.select(:pay_type, options_for_select(@payments.collect {|p|  p.type }, { include_blank: true })) %>
+
   </div>
   
   <div class="actions">

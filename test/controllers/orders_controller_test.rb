@@ -24,10 +24,10 @@ class OrdersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @order
-    assert_response :success
-  end
+  #test "should get edit" do
+   # get :edit, id: @order
+  #  assert_response :success
+  #end
 
   test "should update order" do
     patch :update, id: @order, order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type }
