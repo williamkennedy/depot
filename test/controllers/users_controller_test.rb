@@ -20,7 +20,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, user: { name: 'william', password: 'secret', password_confirmation: 'secret' }
     end
-
     assert_redirected_to users_path
   end
 
@@ -37,8 +36,6 @@ class UsersControllerTest < ActionController::TestCase
   test "should update user" do
     patch :update, id: @user, user: { name: @user.name, password: 'secret',
      password_confirmation: 'secret' }
-   end
-   
     assert_redirected_to users_path
   end
 
@@ -46,7 +43,6 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count', -1) do
       delete :destroy, id: @user
     end
-
     assert_redirected_to users_path
   end
 end
