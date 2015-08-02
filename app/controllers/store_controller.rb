@@ -3,16 +3,20 @@ class StoreController < ApplicationController
   include CurrentCart
   before_action :set_cart
   def index
-  	@products = Product.order(:title)
-  	@count = increment_count 
+    @count = increment_count
+    if params[:set_locale]
+      redirect_to store_url(locale: params[:set_locale])
+    else
+      @products = Product.order(:title)
+    end
   end
   
   private
   def increment_count
-  	if session[:counter].nil?
-  		session[:counter] = 0
-  	end
-  	session[:counter] += 1
+    if session[:counter].nil?
+      session[:counter] = 0
+    end
+    session[:counter] += 1
   end
   
 end
